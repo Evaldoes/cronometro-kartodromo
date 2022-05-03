@@ -1,27 +1,48 @@
-# Evaldoes
+# race-tracker-api
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.10.
+O cronometro de kartódromo é uma aplicação em Angular 13 desenvolvida para registro de campeonatos de corrida de automóveis. 
+A ideia é que seja a interface de comunicação entre o microcontrolador, que captura os tempos de cada volta na pista, e a aplicação Web, que disponibiliza
+esse dado de forma intuitiva para o usuário final.
 
-## Development server
+## Tecnologias utilizadas
+ * Javascript
+ * Node
+ * NPM
+ * Typescript
+ * CSS
+ * SASS
+ * Heroku (for production deployment)
+ * Postman (for documentation)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Para executar localmente
+ É necessário, inicialmente clonar ou baixar o repositório na sua máquina.
+ 
+### Pré-requisitos 
+ Antes de abrir o projeto ou tentar instalar as dependências é necessário ter instalado:
+  * [NodeJS](https://nodejs.org/en/)
+  * [Angular](https://angular.io/cli)
 
-## Code scaffolding
+### Clonand o projeto
+Clone o projeto 
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+  `$ 'git clone git@github.com:Evaldoes/cronometro-kartodromo.git`
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
+### Instalando dependências do projeto
+Em outra janela de terminal, abra a pasta do projeto via linha de comando e execute
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+  `$ npm install`
+  
+para instalar as dependencias necessárias para a execução do projeto. 
 
-## Running end-to-end tests
+### Executando
+Ainda numa janela do terminal aberta no caminho da pasta do projeto, basta executar o comando
+  
+  `$ npm start `
+  
+e você terá o projeto rodando localmente na sua máquina.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Este projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli) version 11.2.10.

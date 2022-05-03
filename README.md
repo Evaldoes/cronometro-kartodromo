@@ -11,8 +11,7 @@ esse dado de forma intuitiva para o usuário final.
  * Typescript
  * CSS
  * SASS
- * Heroku (for production deployment)
- * Postman (for documentation)
+ * HTML
 
 ## Para executar localmente
  É necessário, inicialmente clonar ou baixar o repositório na sua máquina.

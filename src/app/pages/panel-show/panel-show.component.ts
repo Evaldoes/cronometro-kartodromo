@@ -8,6 +8,13 @@ import { CarService } from '../shared/services/car.service';
 import { Championship, ChampionshipService } from '../shared/services/championship.service';
 import { Car } from '../shared/models/car-model';
 
+
+export interface Lap {
+  time?: string,
+  round?: string,
+  car?: string,
+}
+
 @Component({
   selector: 'app-panel-show',
   templateUrl: './panel-show.component.html',
@@ -20,6 +27,7 @@ export class PanelShowComponent implements OnInit {
   public rounds: Round[] = [];
   public cars: Car[] = [];
   selected: any;
+  laps: Lap[] = [];
 
   constructor(
     private carService: CarService,
@@ -32,7 +40,7 @@ export class PanelShowComponent implements OnInit {
     this.getCurrentCar();
     this.getChampionships();
     this.getCars();
-
+    this.wsConnect();
   }
 
   ngOnDestroy(): void {
@@ -51,7 +59,7 @@ export class PanelShowComponent implements OnInit {
           console.log(this.currentCar);
         },
         (error) => {
-          alert("Não há car na pista!");
+          alert('Não há car na pista!');
         }
       );
   }
@@ -66,7 +74,7 @@ export class PanelShowComponent implements OnInit {
           console.log(this.currentCar);
         },
         (error) => {
-          alert("Não há car na pista!");
+          alert('Não há car na pista!');
         }
       );
   }
@@ -81,7 +89,7 @@ export class PanelShowComponent implements OnInit {
           console.log(this.cars);
         },
         (error) => {
-          alert("não foi possivel obter os carros!");
+          alert('não foi possivel obter os carros!');
         }
       );
   }
@@ -96,7 +104,7 @@ export class PanelShowComponent implements OnInit {
           console.log(this.championships);
         },
         (error) => {
-          alert("Não foi possível obter os campeonatos.");
+          alert('Não foi possível obter os campeonatos.');
         }
       );
   }
@@ -113,7 +121,7 @@ export class PanelShowComponent implements OnInit {
           console.log(this.championships);
         },
         (error) => {
-          alert("Não foi possível obter os baterias.");
+          alert('Não foi possível obter os baterias.');
         }
       );
   }
@@ -130,21 +138,28 @@ export class PanelShowComponent implements OnInit {
           this.getCurrentCar();
         },
         (error) => {
-          alert("Não foi possível enviar carro para a pista.");
+          alert('Não foi possível enviar carro para a pista.');
         }
       );
   }
 
   wsConnect() {
+    this.laps = [];
     this.kartWsService.listen('toWebsite')
       .pipe(takeUntil(this.unsubscribe$))
-      .subscribe((data: any) => {
+      .subscribe((data: { action: string, payload: Lap }) => {
         console.log(data);
-
-      })
+        this.laps.push(data.payload as Lap);
+      });
   }
 
   emit() {
     this.kartWsService.emit('registerLap', { time: 'fasdfasdfasdf' });
   }
 }
+
+
+// {
+//   action: 'toW',
+//   payload:
+// }

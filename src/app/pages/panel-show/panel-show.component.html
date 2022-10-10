@@ -69,19 +69,15 @@
                 <th>Volta</th>
                 <th>Tempo</th>
             </tr>
-            <tr>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
+            <tr *ngFor="let lap of laps; let i = index;">
+                <td>{{i +1}}</td>
+                <td>{{lap?.time}}</td>
             </tr>
         </table>
 
 
 
-        <button (click)="emit()">fasdfasdf</button>
+        <!-- <button (click)="emit()">fasdfasdf</button> -->
 
 
 

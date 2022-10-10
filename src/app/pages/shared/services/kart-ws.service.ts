@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { io } from 'socket.io-client';
 import { environment } from 'src/environments/environment';
+import { Lap } from '../../panel-show/panel-show.component';
 
 @Injectable({
   providedIn: 'root'
@@ -27,9 +28,11 @@ export class KartWsService {
     });
   }
 
-  public listen(eventName: string): Observable<unknown> {
+  public listen(eventName: string): Observable<{ action: string, payload: Lap }> {
     return new Observable((subscriber) => {
       this.socket.on(eventName, (data) => {
+        console.log('ws listen ==> ', data);
+
         subscriber.next(data);
       });
     });
